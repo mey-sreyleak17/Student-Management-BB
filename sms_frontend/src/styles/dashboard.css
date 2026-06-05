@@ -1,0 +1,138 @@
+
+.staff-dashboard {
+  min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #071a2f 0%, #0b2441 100%);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-title {
+  color: #fff !important;
+  margin: 0 !important;
+}
+
+.dashboard-subtitle {
+  color: #c6d4e3;
+}
+
+.date-card {
+  border-radius: 20px !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  backdrop-filter: blur(10px);
+}
+
+.summary-card {
+  border-radius: 24px !important;
+  border: none !important;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  transition: 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-6px);
+}
+
+.summary-card .ant-card-body {
+  padding: 24px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  color: #d6e4f0;
+  font-size: 15px;
+}
+
+.card-value {
+  color: white !important;
+  margin-top: 10px !important;
+}
+
+.card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28px;
+}
+
+.analytics-card,
+.attendance-card,
+.quick-card,
+.activity-card {
+  border-radius: 24px !important;
+  border: none !important;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+}
+
+.analytics-card .ant-card-body,
+.attendance-card .ant-card-body,
+.quick-card .ant-card-body,
+.activity-card .ant-card-body {
+  padding: 24px;
+}
+
+.section-title {
+  margin-bottom: 0 !important;
+}
+
+.section-subtitle {
+  color: #7d8ca1;
+}
+
+.quick-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.attendance-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ant-progress-text {
+  color: #1677ff !important;
+  font-weight: bold;
+}
+
+.ant-table-wrapper {
+  margin-top: 20px;
+}
+
+.ant-table {
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.ant-table-thead > tr > th {
+  background: #f5f7fb !important;
+  font-weight: 700;
+}
+
+.ant-btn-primary {
+  border-radius: 12px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: 320px;
+}

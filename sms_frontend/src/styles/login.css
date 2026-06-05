@@ -1,0 +1,69 @@
+.loginform {
+    width: 80%;          /* wider than 100vh */
+    max-width: 700px;   /* cap the width so it doesn’t stretch too far */
+    height: 80vh;        /* taller */
+    margin: 50px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;       /* use flex instead of float for cleaner layout */
+}
+
+.loginform .panel {
+    background-color: aqua;
+    flex: 1;             /* take up half the space */
+    border-radius: 12px 0 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.loginform .panel1 {
+    background-color: white;
+    flex: 1.2;           /* slightly larger than the left panel */
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginform .panel .img-in {
+    width: 150px;        /* bigger image */
+    height: 150px;
+    margin: 40px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.img-in img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.loginform .panel .container {
+    width: 300px;        /* bigger container */
+    height: auto;
+}
+
+.container h2 {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container hr {
+    width: 250px;
+    background-color: black;
+}
+
+.container p {
+    text-align: left;
+    margin-left: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.panel1 .wel h1 {
+    color: black;
+    font-size: 25px;     /* larger text */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

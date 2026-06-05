@@ -1,0 +1,12 @@
+.box-img{
+    /* background-color: rgb(176, 127, 255); */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.box-left{
+    /* background-color: red; */
+    width: 69%;
+    height: 70px;
+    
+}

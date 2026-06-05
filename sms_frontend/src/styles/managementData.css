@@ -1,0 +1,144 @@
+/* =========================
+   PAGE
+========================= */
+
+.page-container {
+  padding: 24px;
+  background: #f4f7fe;
+  min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-header h2 {
+  margin: 0;
+  color: #001529;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* =========================
+   SUMMARY CARD
+========================= */
+
+.summary-card {
+  border-radius: 18px !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+}
+
+.summary-card .ant-statistic {
+  text-align: center;
+}
+
+.summary-card .ant-statistic-content {
+  color: #1677ff;
+  font-weight: bold;
+}
+
+/* =========================
+   CUSTOM CARD
+========================= */
+
+.custom-card {
+  border-radius: 18px !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.custom-card .ant-card-head-title {
+  color: #001529;
+  font-weight: 600;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.ant-table {
+  border-radius: 12px;
+}
+
+.ant-table-thead > tr > th {
+  background: #eaf2ff !important;
+  color: #001529 !important;
+  font-weight: 600;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: #f5f9ff !important;
+}
+
+/* =========================
+   STORAGE TEXT
+========================= */
+
+.storage-text {
+  text-align: center;
+  margin-top: 15px;
+  color: gray;
+  font-size: 15px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.ant-btn-primary {
+  background: #1677ff;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  padding-inline: 20px;
+  font-weight: 500;
+}
+
+.ant-btn {
+  border-radius: 10px;
+}
+
+/* =========================
+   TAG
+========================= */
+
+.ant-tag {
+  border-radius: 20px;
+  padding-inline: 12px;
+  font-weight: 500;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 15px;
+  }
+
+  .page-header h2 {
+    font-size: 24px;
+  }
+}

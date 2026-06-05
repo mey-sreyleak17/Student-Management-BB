@@ -1,0 +1,57 @@
+.enrollment-page {
+  padding: 30px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.enrollment-header {
+  margin-bottom: 20px;
+}
+
+.enrollment-card {
+  border-radius: 12px;
+}
+
+.enrollment-search {
+  width: 350px;
+}
+
+.status-active {
+  background: #f6ffed;
+  color: #52c41a;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-inactive {
+  background: #fff1f0;
+  color: #ff4d4f;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.action-icon {
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.action-icon:hover {
+  transform: scale(1.1);
+}
+
+.view-icon {
+  color: #1890ff;
+}
+
+.edit-icon {
+  color: #52c41a;
+}
+
+.delete-icon {
+  color: red;
+}

@@ -1,0 +1,46 @@
+.create-class-container {
+  padding: 30px;
+  background: #f4f7fb;
+  min-height: 100vh;
+}
+
+.create-class-card {
+  max-width: 1000px;
+  margin: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-header {
+  margin-bottom: 25px;
+}
+
+.form-header h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #1677ff;
+  font-weight: 700;
+}
+
+.form-header p {
+  margin-top: 5px;
+  color: #64748b;
+}
+
+.ant-form-item-label label {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.ant-input,
+.ant-select-selector {
+  border-radius: 10px !important;
+  height: 45px !important;
+}
+
+.submit-btn {
+  height: 48px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}

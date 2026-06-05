@@ -1,0 +1,111 @@
+/* style.css */
+
+body {
+  margin: 0;
+  background: #f4f7fe;
+  font-family: "Poppins", sans-serif;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #001529, #003a8c);
+  color: white;
+}
+
+.logo {
+  text-align: center;
+  padding: 24px 10px;
+  color: white;
+}
+
+.logo h2 {
+  color: white;
+  margin-bottom: 0;
+}
+
+.logo span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.profile-box {
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+.profile-box h3 {
+  margin-top: 10px;
+  margin-bottom: 0;
+  color: white;
+}
+
+.profile-box p {
+  opacity: 0.8;
+}
+
+.menu {
+  background: transparent;
+  border: none;
+}
+
+.topbar {
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 25px;
+}
+
+.topbar h2 {
+  margin: 0;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search {
+  width: 250px;
+}
+
+.notify {
+  font-size: 20px;
+  color: #1677ff;
+  cursor: pointer;
+}
+
+.content {
+  padding: 24px;
+}
+
+.dashboard-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.main-card {
+  border-radius: 16px;
+  min-height: 350px;
+}
+
+.chart-box {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fake-chart {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1677ff, #69b1ff);
+}
+
+.action-btn {
+  margin-bottom: 15px;
+  height: 45px;
+  border-radius: 10px;
+}
