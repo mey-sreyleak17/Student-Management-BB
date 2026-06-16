@@ -159,7 +159,7 @@ exports.createKHQR = async (req, res) => {
     const khqrResult =
     await axios.post(
 
-      "https://api.bakongrelay.com/v1/generate_qr",
+     process.env.BAKONG_URL_CREATE_QR,
 
       payload,
 
@@ -226,7 +226,7 @@ exports.createKHQR = async (req, res) => {
 const imageResult =
 await axios.post(
 
-  "https://api.bakongrelay.com/v1/generate_khqr_image",
+  process.env.BAKONG_URL_CREATE_QR_IMAGE,
 
   {
     qr: khqrString
@@ -556,7 +556,7 @@ async (req, res) => {
     const response =
       await axios.post(
 
-        "https://api.bakongrelay.com/v1/check_transaction_by_md5",
+        process.env.BAKONG_URL_CHECK_TRANSECTION,
 
         {
           md5:
