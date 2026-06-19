@@ -1,0 +1,2674 @@
+{
+  "info": {
+    "_postman_id": "a01142d2-7e15-4d50-a334-8eb17aaeed6b",
+    "name": "Bright Brain SMS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32329522"
+  },
+  "item": [
+    {
+      "name": "auth_route",
+      "item": [
+        {
+          "name": "create user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Name\":\"Dara\",\r\n    \"Email\":\"meyling081708@gmail.com \",\r\n    \"Password\":\"123\",\r\n    \"Role\":\"staff\"\r\n    \r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/create-auth",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "create-auth"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "auth login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();\r",
+                  "\r",
+                  "pm.environment.set(\"ACCESS_TOKEN\", res.accessToken);\r",
+                  "pm.environment.set(\"REFRESH_TOKEN\", res.refreshToken);\r",
+                  "\r",
+                  "//console.log(\"Access Token:\", res.accessToken);\r",
+                  "//console.log(\"Refresh Token:\", res.refreshToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"Email\":\"meysreyleak08@gmail.com\",\r\n \"Password\":\"1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var responseBody = pm.response.json();\r",
+                  "var token=responseBody.accessToken;\r",
+                  "console.log(\"accessToken:\",token);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"refreshToken\": \"{{REFRESH_TOKEN}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "forgot password",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();\r",
+                  "pm.environment.set(\"RESET_TOKEN\", res.resetToken);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6MiwiaWF0IjoxNzczMzc2OTY2LCJleHAiOjE3NzM5ODE3NjZ9.xiygKa5pnINFcnbdSQ11jRwiA9DzDSSvzqHV9A3iIQs",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"Email\":\"sreyleakmey376@gmail.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/forgot-password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "forgot-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reset password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{RESET_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \r\n    \"newPassword\":\"1234\",\r\n    \"confirmPassword\":\"1234\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/reset-password",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "reset-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create teacher",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"UserId\":3,\r\n    \"Action\":\"Logout account\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/register-teacher",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "register-teacher"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "verifyOtp",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{RESET_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"Otp\":\"503873\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/auth/verify-otp",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "auth",
+                "verify-otp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "description": "**Description:** > Handles user authentication, registration, password recovery, and session management within the Bright Brain SMS.• **POST create user**  \n• Purpose: Registers a new system user (admin/staff).  \n• Expected Response: 201 Created with the newly created user details.  \n• **POST auth login**  \n• Purpose: Authenticates existing users using Email and Password.  \n• Expected Response: 200 OK along with a secure JWT Access Token.  \n• **POST logout**  \n• Purpose: Terminates the user session and invalidates the active session token.  \n• **POST forgot password & reset password**  \n• Purpose: Manages the secure account recovery process via registered emails.  \n• **POST verifyOtp**  \n• Purpose: Validates the One-Time Password (OTP) sent during password resets.EndFragment"
+    },
+    {
+      "name": "Logs",
+      "item": [
+        {
+          "name": "get user by ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"UserId\":1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/logs/getone",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "logs",
+                "getone"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getBy Date",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/logs/date-range?start=2026-02-01&end=2026-02-23",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "logs",
+                "date-range"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-02-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-02-23"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "clear logs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "GET /api/logs/date-range?start=2026-02-01&end=2026-02-23",
+              "host": [
+                "GET "
+              ],
+              "path": [
+                "api",
+                "logs",
+                "date-range"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-02-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-02-23"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getlist logs",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              "var "
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "student",
+      "item": [
+        {
+          "name": "get student",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-one",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "19"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-student",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "Name",
+                  "value": "ksk",
+                  "type": "text",
+                  "uuid": "a80384e5-f17c-48fa-877f-6ade9ca01e7f"
+                },
+                {
+                  "key": "KhmerName",
+                  "value": "យិន នីតា",
+                  "type": "text",
+                  "uuid": "989c0dbb-b4c7-4cbe-b1f2-8b9d093b9b81"
+                },
+                {
+                  "key": "Gender",
+                  "value": "Female",
+                  "type": "text",
+                  "uuid": "e81917f8-2122-41f6-a08c-a23aeaf58bdd"
+                },
+                {
+                  "key": "DOB",
+                  "value": "2008-09-12",
+                  "type": "text"
+                },
+                {
+                  "key": "ClassId",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "25e6efcf-414b-4c0b-9731-f9c8988372c4"
+                },
+                {
+                  "key": "TeacherId",
+                  "value": "10",
+                  "type": "text",
+                  "uuid": "63c1640c-c46a-4776-bc1d-e14ac12ff277"
+                },
+                {
+                  "key": "DadName",
+                  "value": "Koko",
+                  "type": "text",
+                  "uuid": "403416f7-c0d0-49d5-a387-51d88a836764"
+                },
+                {
+                  "key": "MomName",
+                  "value": "Tota",
+                  "type": "text",
+                  "uuid": "8f4183b5-ac4f-412a-83d9-db9e51b576af"
+                },
+                {
+                  "key": "Address",
+                  "value": "Svay Reing",
+                  "type": "text",
+                  "uuid": "ff0ca500-3c79-46a2-a1f2-982e6c1a5669"
+                },
+                {
+                  "key": "ParentPhone",
+                  "value": "090898886",
+                  "type": "text",
+                  "uuid": "b309cf5c-a409-4a8c-ab14-452a3e0bdecd"
+                },
+                {
+                  "key": "Image",
+                  "type": "file",
+                  "uuid": "ba583a42-dbde-45ad-b82b-9df7011e5fbb",
+                  "src": "postman-cloud:///1f0f5cdf-6730-4800-9979-bd5347361508"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update student",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "Name",
+                  "value": "Von Chanthavy",
+                  "type": "text",
+                  "uuid": "989c0dbb-b4c7-4cbe-b1f2-8b9d093b9b81"
+                },
+                {
+                  "key": "KhmerName",
+                  "value": "វ៉ុន ចាន់ថាវី",
+                  "type": "text",
+                  "uuid": "e81917f8-2122-41f6-a08c-a23aeaf58bdd"
+                },
+                {
+                  "key": "Gender",
+                  "value": "female",
+                  "type": "text"
+                },
+                {
+                  "key": "DOB",
+                  "value": "2005-12-09",
+                  "type": "text"
+                },
+                {
+                  "key": "ClassId",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "25e6efcf-414b-4c0b-9731-f9c8988372c4"
+                },
+                {
+                  "key": "TeacherId",
+                  "value": "10",
+                  "type": "text",
+                  "uuid": "63c1640c-c46a-4776-bc1d-e14ac12ff277"
+                },
+                {
+                  "key": "DadName",
+                  "value": "Sok Dara",
+                  "type": "text",
+                  "uuid": "403416f7-c0d0-49d5-a387-51d88a836764"
+                },
+                {
+                  "key": "MomName",
+                  "value": "Sonyta",
+                  "type": "text",
+                  "uuid": "8f4183b5-ac4f-412a-83d9-db9e51b576af"
+                },
+                {
+                  "key": "Address",
+                  "value": "PP",
+                  "type": "text",
+                  "uuid": "ff0ca500-3c79-46a2-a1f2-982e6c1a5669"
+                },
+                {
+                  "key": "ParentPhone",
+                  "value": "099786799",
+                  "type": "text",
+                  "uuid": "b309cf5c-a409-4a8c-ab14-452a3e0bdecd"
+                },
+                {
+                  "key": "Image",
+                  "type": "file",
+                  "uuid": "ba583a42-dbde-45ad-b82b-9df7011e5fbb",
+                  "src": "postman-cloud:///1f0f5cdf-6730-4800-9979-bd5347361508"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "19"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete student",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "import",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "06085c2a-e920-47a2-9e66-6aa135acd53b",
+                  "src": "/C:/Users/Srey Leak/Downloads/student_import_with_gender_dob.xlsx"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/student/import-excel",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "student",
+                "import-excel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get stu class",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/class/5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "class",
+                "5"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get attendance stu by date",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "file",
+              "file": {}
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/3/attendance",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "3",
+                "attendance"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "student payment",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/10/payments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "10",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getstu count",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getlist enroll stu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/students/enroll",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "enroll"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "stu infomation",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ],
+      "description": "Manages student enrollment, profile records, reporting, and bulk imports.  \n• **GET get student & get-one**  \n• Purpose: Fetches either the entire student roster or a single student profile by ID.  \n• **POST create-student & PUT update student**  \n• Purpose: Registers new students and updates their personal, contact, or academic profiles.  \n• **POST import**  \n• Purpose: Supports bulk student creation via excel/CSV file data import.  \n• **GET get stu class & getlist enroll stu**  \n• Purpose: Filters and shows students grouped by their designated class schedules.  \n• **GET get attendance stu by date**  \n• Purpose: Pulls attendance logs filtered by a specific calendar date.EndFragment"
+    },
+    {
+      "name": "user route",
+      "item": [
+        {
+          "name": "getlist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/user/getlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "user",
+                "getlist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-one",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Id\":3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/user/get-one",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "user",
+                "get-one"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Id\":\"3\",\r\n    \"Email\":\"sreyleak09@gmail.com\",\r\n    \"Password\":\"123\",\r\n    \"Role\":\"other\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/user/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "user",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete user",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"Id\":\"3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/user/delete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "user",
+                "delete"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "teacher",
+      "item": [
+        {
+          "name": "getlist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getcount",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/getlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "getlist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getteacher class",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/getlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "getlist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "asign teacher toclass",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/getlist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "getlist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-one",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/get-one/10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "get-one",
+                "10"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create teacher",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "Name",
+                  "value": "Von Chanthavy",
+                  "type": "text",
+                  "uuid": "3bb5f2ad-b7a2-4989-a5c1-7a270647dd3d"
+                },
+                {
+                  "key": "KhmerName",
+                  "value": "ដារ៉ា",
+                  "type": "text",
+                  "uuid": "19878a2f-6312-4938-981b-a0d6aee87309"
+                },
+                {
+                  "key": "TelegramPhone",
+                  "value": "0970788999",
+                  "type": "text",
+                  "uuid": "0ef8da3d-ac2f-425d-9bba-0b1041f6fc98"
+                },
+                {
+                  "key": "ShiftId",
+                  "value": "2",
+                  "type": "text",
+                  "uuid": "f3d9749e-73ff-40e5-8e7c-5070c20147f4"
+                },
+                {
+                  "key": "ClassId",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "Address",
+                  "value": "Svay Reing",
+                  "type": "text",
+                  "uuid": "eea765a5-38f4-45e3-bbbd-c5c0626270f7"
+                },
+                {
+                  "key": "Image",
+                  "type": "file",
+                  "uuid": "3af6acb7-53ce-4329-ad4e-5db431bd0792",
+                  "src": "/D:/year4/Sybersecurity/web_Node/Node/public/profile/leak.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete teacher",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/delete/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "delete",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "Name",
+                  "value": "Yen Somphors",
+                  "type": "text"
+                },
+                {
+                  "key": "KhmerName",
+                  "value": "យិន សំភាស់",
+                  "type": "text"
+                },
+                {
+                  "key": "TelegramPhone",
+                  "value": "090988978",
+                  "type": "text"
+                },
+                {
+                  "key": "ShiftId",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "ClassId",
+                  "value": "5",
+                  "type": "text"
+                },
+                {
+                  "key": "Address",
+                  "value": "PP",
+                  "type": "text"
+                },
+                {
+                  "key": "Image",
+                  "type": "file",
+                  "src": "postman-cloud:///1f0f5cdf-6730-4800-9979-bd5347361508"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/update/11",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "update",
+                "11"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getownteacherclass",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/classes/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "classes",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "assignteachertoclass",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"ClassId\": 5,\r\n  \"SubjectId\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/11/assign-class-sub",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "11",
+                "assign-class-sub"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "total teacher",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/teacher/total",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teacher",
+                "total"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get class id by teacher id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/classes/by-Teacher",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "classes",
+                "by-Teacher"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "teacher Profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/teachers/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "teachers",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "**Description:**  \nManages faculty profiles, employment records, and academic classroom assignments.  \n• **GET getlist & get-one**  \n• Purpose: Retrieves lists of active faculty members or individual teacher profiles.  \n• **POST asign teacher toclass & PUT assignteachertoclass**  \n• Purpose: Connects teachers to specific subject classes and manages their teaching loads.  \n• **POST create teacher & PUT update**  \n• Purpose: Onboards new faculty members and updates their operational details.EndFragment"
+    },
+    {
+      "name": "attendance",
+      "item": [
+        {
+          "name": "check In",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"lat\": 11.5564,\r\n  \"lng\": 104.9282\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/teacher/check-in",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "teacher",
+                "check-in"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAttendanceCount",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/teacher/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "teacher",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getTeacherAttendance",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/teacher",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "teacher"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getattendancesumarry",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student/summary?startDate=2026-04-01&endDate=2026-04-30",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student",
+                "summary"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2026-04-01"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-04-30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "checkout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"lat\": 11.5564,\r\n  \"lng\": 104.9282\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/teacher/check-out",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "teacher",
+                "check-out"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "export student excel",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student/export/excel",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student",
+                "export",
+                "excel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "pdf stu attendance",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student/export/pdf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student",
+                "export",
+                "pdf"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "attendance history",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student/history",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student",
+                "history"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getlist student attendance",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "report daily",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student/daily",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student",
+                "daily"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "teacher mark stu attendance",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"classId\": 4,\r\n  \"date\": \"2026-04-22\",\r\n  \"students\": [\r\n    { \"studentId\": 25, \"status\": \"Present\" },\r\n    { \"studentId\": 26, \"status\": \"Absent\" },\r\n    { \"studentId\": 27, \"status\": \"Late\" }\r\n  ]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/student/mark",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "student",
+                "mark"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-atten_stu_stats",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "teacher permission",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"startDate\":\"2026-04-29\",\r\n    \"EndDate\":\"2026-04-30\",\r\n    \"Reason\":\"I have BC at my family\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/attendance/teacher/permission",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "attendance",
+                "teacher",
+                "permission"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get student list attendance",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"classId\":5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/attendance/getlist-stu",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "attendance",
+                "getlist-stu"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "**Description:**  \nTracks and exports daily check-in/check-out logs for both students and teachers.  \n• **POST check In & checkout**  \n• Purpose: Registers live timestamps of entry and exit for accountability tracking.  \n• **GET export student excel & pdf stu attendance**  \n• Purpose: Generates downloadable reports for institutional auditing.  \n• **POST teacher mark stu attendance**  \n• Purpose: Allows teachers to submit complete class attendance lists (Present/Absent/Excused).EndFragment"
+    },
+    {
+      "name": "classes",
+      "item": [
+        {
+          "name": "getlist",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/classes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "classes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "add class",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"ClassName\":\"D007\",\r\n    \"TeacherId\":1,\r\n    \"LevelId\":2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/classes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "classes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "class count",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/classes/count",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "classes",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "class one",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/classes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "classes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getClassName",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "student select",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n \"Email\":\"meysreyleak08@gmail.com\",\r\n \"Password\":\"123\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/students/select",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "students",
+                "select"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "**Description:**  \nControls class metadata, student capacity, and classroom grouping.\n\n• **POST add class**  \n• Purpose: Provisions new academic sections or classes into the school grid.  \n• **GET student select**  \n• Purpose: Utility endpoint to list eligible students available for class assignment.EndFragment"
+    },
+    {
+      "name": "payment",
+      "item": [
+        {
+          "name": "create QRcode",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{ACCESS_TOKEN}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"StudentId\": 100,\r\n  \"FeeId\": 100,\r\n  \"Amount\": 120,\r\n  \"PaymentType\": \"Tuition Fee\",\r\n  \"Months\": \"January\",\r\n  \"studentName\": \"Sreyleak Mey\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8001/api/payment/create-khqr",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "api",
+                "payment",
+                "create-khqr"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get student Info Id",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "check status payment",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "rbkHefdPKMh-vA4XzGE4HBnpQlab0HvVipJOmvAiHp5vl8",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"md5\": \"844fa6c582ea0da8a3efe0bc94c85559\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.bakongrelay.com/v1/check_transaction_by_md5",
+              "protocol": "https",
+              "host": [
+                "api",
+                "bakongrelay",
+                "com"
+              ],
+              "path": [
+                "v1",
+                "check_transaction_by_md5"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "**Description:**  \nHandles financial transactions by interfacing with secure banking architectures.  \n• **POST create QRCode**\n\n• Get Student Information before get amount for payment.  \n• Purpose: Calls the **Bakong KHQR API** to instantly generate a dynamic, transaction-specific QR code for school fee invoices.  \n• **POST check status payment**  \n• Purpose: Actively tracks incoming webhooks/callback data to automatically verify successful money transfers and switch status to \"Paid\" inside the database.EndFragment"
+    }
+  ]
+}
